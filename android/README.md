@@ -20,6 +20,14 @@ Atau buka folder `android/` di Android Studio. `gradle.properties` membatasi mem
 APK yang dihasilkan adalah **debug build**, ditandatangani dengan debug keystore. Untuk
 rilis publik, buat keystore sendiri dan konfigurasi `signingConfigs`; jangan pakai debug key.
 
+## CI / unduh APK
+
+Workflow [`.github/workflows/android.yml`](../.github/workflows/android.yml) berjalan pada
+push ke `main` (atau manual lewat **Run workflow**): build APK debug, lint, lalu unggah
+`tinta-android-debug` (APK + checksum) dan `tinta-source` (arsip sumber). Unduh dari tab
+**Actions → Android build → run terbaru → Artifacts**. Artefak disimpan 30 hari; binary
+build tidak disimpan di git.
+
 ## Fitur
 
 - Pustaka buku dengan sampul gradien generatif, tag, dan kartu "Lanjutkan".

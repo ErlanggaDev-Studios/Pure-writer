@@ -9,13 +9,18 @@ Dibangun ulang secara **clean-room** dari fitur publik aplikasi menulis. Nama, p
 sampul, dan seluruh teks dibuat untuk Tinta. Tidak ada kode, aset, logo, font, atau teks
 milik aplikasi lain yang dipakai.
 
-## Artefak
+## Unduh APK dari GitHub Actions
 
-- **APK Android (debug, dapat dipasang):** [`artifacts/tinta-android-1.0.0-debug.apk`](artifacts/tinta-android-1.0.0-debug.apk)
-- **Sumber lengkap:** [`artifacts/tinta-1.0.0-source.zip`](artifacts/tinta-1.0.0-source.zip)
-- Ringkasan dan checksum: [`artifacts/README.md`](artifacts/README.md)
+Setiap push ke `main` yang menyentuh proyek Android membangun APK debug, menjalankan lint,
+dan mengunggah hasilnya sebagai artefak Actions (disimpan 30 hari):
 
-APK ditandatangani dengan debug key. Untuk distribusi publik, buat keystore rilis sendiri.
+1. Buka [Actions → Android build](https://github.com/ErlanggaDev-Studios/Pure-writer/actions/workflows/android.yml).
+2. Pilih run terbaru yang hijau.
+3. Di bagian **Artifacts**, unduh `tinta-android-debug` (zip berisi APK + `SHA256SUMS.txt`)
+   atau `tinta-source` (arsip sumber).
+
+Tidak ada APK biner di git. APK ditandatangani dengan debug key; untuk distribusi publik,
+buat keystore rilis sendiri.
 
 ## Build native
 
@@ -27,7 +32,7 @@ cd android
 ./gradlew :app:lintDebug
 ```
 
-Atau buka `android/` di Android Studio. Detail arsitektur dan batas versi ada di
+Atau buka `android/` di Android Studio. Detail arsitektur, CI, dan batas versi ada di
 [`android/README.md`](android/README.md).
 
 ## Fitur native
